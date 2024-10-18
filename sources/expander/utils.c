@@ -6,11 +6,27 @@
 /*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:42:13 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/11 15:25:26 by nasser           ###   ########.fr       */
+/*   Updated: 2024/10/17 21:34:08 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/expander.h"
+
+void	single_quote_check(int *flag)
+{
+	if (*flag == NO_QUOTE || *flag == CLOSED_SINGLE_QUOTE)
+		*flag = OPENED_SINGLE_QUOTE;
+	if (*flag == OPENED_SINGLE_QUOTE)
+		*flag = CLOSED_SINGLE_QUOTE;
+}
+
+void	double_quote_check(int *flag)
+{
+	if (*flag == NO_QUOTE || *flag == CLOSED_DOUBLE_QUOTE)
+		*flag = OPENED_DOUBLE_QUOTE;
+	if (*flag == OPENED_DOUBLE_QUOTE)
+		*flag = CLOSED_DOUBLE_QUOTE;
+}
 
 int	ternary(int condition, int if_true, int if_false)
 {

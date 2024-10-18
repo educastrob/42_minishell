@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: nasser <nasser@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:42:26 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/15 12:44:50 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/17 21:26:19 by nasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ typedef struct s_str_list
 	struct s_str_list	*next;
 }				t_str_list;
 
+// enums
+enum e_quote_checking
+{
+	NO_QUOTE = 0,
+	OPENED_SINGLE_QUOTE = 1,
+	OPENED_DOUBLE_QUOTE = 2,
+	CLOSED_SINGLE_QUOTE = 3,
+	CLOSED_DOUBLE_QUOTE = 4
+};
+
 // expand_heredoc.c
 char	*expand_heredoc(char *str, t_env *envp_list);
 
@@ -48,5 +58,7 @@ char	*create_string_from_list(t_str_list *lst);
 int		ternary(int condition, int if_true, int if_false);
 int		is_valid_var(char letter);
 char	*remove_quotes(char	*delimiter);
+void	single_quote_check(int *flag);
+void	double_quote_check(int *flag);
 
 #endif
